@@ -7,7 +7,7 @@ import requests
 import bs4
 
 BASE_URL = "https://www.bloombergapa.com"
-BASE_FOLDER = "apa/bloomberg"
+BASE_FOLDER = "./data/bloomberg"
 
 
 def get_file_list() -> list[tuple[str, str]]:
