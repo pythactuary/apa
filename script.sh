@@ -1,4 +1,4 @@
 #!/bin/bash
 cd $(dirname $0)
 source ./env/bin/activate
-python bloombergapa.py
+python test.py

@@ -1,2 +1,4 @@
 bs4
 requests
+azure-functions
+azure-storage-blob

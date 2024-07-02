@@ -1,13 +1,9 @@
 """Downloads all the text files from the Bloomberg APA website"""
 
-import datetime
-import os
-
 import requests
 import bs4
 
 BASE_URL = "https://www.bloombergapa.com"
-BASE_FOLDER = "./data/bloomberg"
 
 
 def get_file_list() -> list[tuple[str, str]]:
@@ -31,15 +27,3 @@ def get_file_data(download_link) -> str:
     HEADER_SEPARATOR = "\n\n\n\n\n\n\n\n"
     data = response.content.decode().split(HEADER_SEPARATOR)[1]
     return data
-
-
-now = datetime.datetime.now()
-time_identifier = now.strftime("%Y-%m-%d:%H.%M.%S")
-destination_folder = BASE_FOLDER + "/" + str(time_identifier)
-
-os.makedirs(destination_folder, exist_ok=True)
-
-for filename, download_link in get_file_list():
-    data = get_file_data(download_link)
-    with open(f"{destination_folder}/{filename}", "wt") as f:
-        f.write(data)
